@@ -1,4 +1,4 @@
-1. 下載Python
+1. 下載Python(請使用Python 3.10 以上版本)
    https://www.python.org/getit/
 
 2. 用vscode開啟create_project_object 資料夾
