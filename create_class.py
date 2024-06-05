@@ -2,21 +2,8 @@
 Connects to a SQL database using pymssql
 """
 
-import pymssql, os, codecs
+import os
 import schema_info
-
-
-# 全域變數
-def SetConn():
-    global _conn
-    _conn = pymssql.connect(
-        server="localhost\\SQLEXPRESS02",
-        user="sa",
-        password="1qaz@WSX",
-        database="ITRI_ARTC",
-        as_dict=True,
-    )
-    return _conn
 
 
 def ProjectName(project_name):
@@ -118,12 +105,11 @@ def CreateParams():
     text = ""
 
     for dr in _schema.table_columns:
-        is_nullable = ""
-        if dr["IS_NULLABLE"] == "YES":
-            is_nullable = "?"
-
+        is_nullable = "?" if dr["IS_NULLABLE"] == "YES" else ""
+        Required = "" if is_nullable == "" else "[Required]"
         text = (
             text
+            + Required
             + " public {DataType}{IsNull} {ParamName}".format(
                 DataType=_schema.System_DataType(dr["DATA_TYPE"]),
                 IsNull=is_nullable,
@@ -300,8 +286,8 @@ def Create(project_name, table_name):
     if table_name == "--All--":
         dt = schema_info.GetTableList()
     else:
-        dt = [{'TABLE_NAME': table_name}]
-    
+        dt = [{"TABLE_NAME": table_name}]
+
     global _schema
     for dr in dt:
         _schema = schema_info.SchemaInfo(dr["TABLE_NAME"])

@@ -2,21 +2,8 @@
 Connects to a SQL database using pymssql
 """
 
-import pymssql, os, codecs
+import os
 import schema_info
-
-
-# 全域變數
-def SetConn():
-    global _conn
-    _conn = pymssql.connect(
-        server="localhost\\SQLEXPRESS02",
-        user="sa",
-        password="1qaz@WSX",
-        database="ITRI_ARTC",
-        as_dict=True,
-    )
-    return _conn
 
 
 def ProjectName(project_name):
@@ -107,9 +94,7 @@ def CreateViewIndex():
             _schema.identity_column,
         )
     else:
-        model_key = ",".join(
-            [" %s = item.%s" % (p, p) for p in _schema.primary_column]
-        )
+        model_key = ",".join([" %s = item.%s" % (p, p) for p in _schema.primary_column])
 
     f.write(
         text.format(
@@ -122,6 +107,7 @@ def CreateViewIndex():
     )
 
     f.close()
+
 
 def CreateViewDetails():
 
@@ -149,7 +135,7 @@ def CreateViewDetails():
     <a asp-action="Index">Back to List</a>
 </div>
 """
-  
+
     d_list = "".join(
         [
             """
@@ -187,6 +173,7 @@ def CreateViewDetails():
     )
 
     f.close()
+
 
 def CreateViewCreate():
 
@@ -230,7 +217,7 @@ def CreateViewCreate():
     </script>
 }}
 """
-  
+
     div_list = "".join(
         [
             """
@@ -255,6 +242,7 @@ def CreateViewCreate():
     )
 
     f.close()
+
 
 def CreateViewEdit():
 
@@ -300,7 +288,7 @@ def CreateViewEdit():
     </script>
 }}
 """
-  
+
     div_list = "".join(
         [
             """
@@ -334,7 +322,7 @@ def Create(project_name, table_name):
     if table_name == "--All--":
         dt = schema_info.GetTableList()
     else:
-        dt = [{'TABLE_NAME': table_name}]
+        dt = [{"TABLE_NAME": table_name}]
 
     global _schema
     for dr in dt:
