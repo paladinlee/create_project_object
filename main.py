@@ -1,42 +1,69 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-
-import sys, demo_ui, create_class, create_controller, create_view, schema_info,export_table_schema
+from selenium import webdriver
+from axe_selenium_python import Axe
+from datetime import datetime
 
 
-class myMainWindow(QMainWindow, demo_ui.Ui_MainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        self.txt_ProjectName.setText("CreateObjectByPython")
-        self.btn_Create.clicked.connect(lambda: self.button_event())
-        self.lbl_msg.setStyleSheet("QLabel { color: rgb(255, 0, 0); }")
+def writeTxt(results):
+    txt = ""
+    for violation in results["violations"]:
+        text = """
+網址: {webUrl}
+問題: {description}
+嚴重性: {impact}
+影響元素: {html}
+修復建議: {helpUrl}
+--------------------------------------------------
+"""
+        txt = txt + text.format(webUrl=_webUrl,
+                                description=violation['description'],
+                                impact=violation['impact'],
+                                html=violation['nodes'][0]['html'].replace(
+                                    "\"", "'"),
+                                helpUrl=violation['helpUrl'])
 
-        dt = schema_info.GetTableList()        
-        self.comboBox.addItem("--All--")
-        for row in dt:
-            self.comboBox.addItem(row["TABLE_NAME"])
+    f = open(_date_time_string + ".txt", "a", encoding="UTF-8")
 
-    def button_event(self):
-
-        project_name = self.txt_ProjectName.text()
-        table_name =  self.comboBox.currentText()
-        try:  # 使用 try，測試內容是否正確
-            create_class.Create(project_name,table_name)
-            create_controller.Create(project_name,table_name)
-            create_view.Create(project_name,table_name)
-            create_view.Create(project_name,table_name)
-            export_table_schema.Export(table_name)
-            self.lbl_msg.setText("專案 %s 物件建立完成" % (project_name))
-        except:  # 如果 try 的內容發生錯誤，就執行 except 裡的內容
-            self.lbl_msg.setText("發生錯誤")
+    f.write(txt)
 
 
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    window = myMainWindow()
-    window.show()
-    sys.exit(app.exec_())
+def test_web_url(webUrl):
 
+    global _webUrl
+    _webUrl = webUrl
+
+    # driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Firefox()
+    driver.get(webUrl)
+    axe = Axe(driver)
+
+    # Inject axe-core javascript into page.
+    axe.inject()
+
+    # Run axe accessibility checks.
+    results = axe.run()
+
+    # Write results to file
+    writeTxt(results)
+
+    # axe.write_results(results, 'a11y.json')
+    axe.write_results(results["violations"], _date_time_string + ".json")
+    driver.close()
+
+    # Assert no violations are found
+    # assert len(results["violations"]) == 0, axe.report(results["violations"])
+
+
+def Test():    
+
+    now = datetime.now()
+    global _date_time_string
+    _date_time_string = now.strftime("%Y%m%d%H%M%S")
+
+    f = open('list.txt')
+    for line in f.readlines():
+         print(line)
+         test_web_url(line)
+
+    f.close
+
+Test()

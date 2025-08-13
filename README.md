@@ -15,7 +15,7 @@
   
    執行> virtualenv venv
 
-6. 執行> activate
+6. 執行> venv\Scripts\activate
   
    執行後開頭會顯示(venv) 路徑
   

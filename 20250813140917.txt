@@ -1,0 +1,90 @@
+
+網址: https://www.tusa.tw/zh/Index/Index
+
+問題: Ensures every id attribute value of active elements is unique
+嚴重性: serious
+影響元素: <a href='./../.../../../en/Index/Index' id='langToggle' aria-label='語系切換' title='語系切換'>
+                    <i class='bi bi-globe icon-gradient' aria-hidden='true'></i>
+                    <span id='langText'>Eng</span>
+                </a>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/duplicate-id-active?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/Index/Index
+
+問題: Ensures every id attribute value is unique
+嚴重性: minor
+影響元素: <span id='langText'>Eng</span>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/duplicate-id?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/Index/Index
+
+問題: Ensures all page content is contained by landmarks
+嚴重性: moderate
+影響元素: <html lang='zh-TW'>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/region?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/origin
+
+問題: Ensures every id attribute value of active elements is unique
+嚴重性: serious
+影響元素: <a href='./../.../../../en/About/origin' id='langToggle' aria-label='語系切換' title='語系切換'>
+                    <i class='bi bi-globe icon-gradient' aria-hidden='true'></i>
+                    <span id='langText'>Eng</span>
+                </a>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/duplicate-id-active?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/origin
+
+問題: Ensures every id attribute value is unique
+嚴重性: minor
+影響元素: <span id='langText'>Eng</span>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/duplicate-id?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/origin
+
+問題: Ensures the page has only one main landmark and each iframe in the page has at most one main landmark
+嚴重性: moderate
+影響元素: <html lang='zh-TW'>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/landmark-one-main?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/origin
+
+問題: Ensures all page content is contained by landmarks
+嚴重性: moderate
+影響元素: <html lang='zh-TW'>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/region?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/inauguration
+問題: Ensures each HTML document contains a non-empty <title> element
+嚴重性: serious
+影響元素: <html>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/document-title?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/inauguration
+問題: Ensures every HTML document has a lang attribute
+嚴重性: serious
+影響元素: <html>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/html-has-lang?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/inauguration
+問題: Ensures the page has only one main landmark and each iframe in the page has at most one main landmark
+嚴重性: moderate
+影響元素: <html>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/landmark-one-main?application=axeAPI
+--------------------------------------------------
+
+網址: https://www.tusa.tw/zh/About/inauguration
+問題: Ensures all page content is contained by landmarks
+嚴重性: moderate
+影響元素: <html>
+修復建議: https://dequeuniversity.com/rules/axe/3.1/region?application=axeAPI
+--------------------------------------------------

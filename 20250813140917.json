@@ -1,0 +1,175 @@
+[
+    {
+        "description": "Ensures each HTML document contains a non-empty <title> element",
+        "help": "Documents must have <title> element to aid in navigation",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/3.1/document-title?application=axeAPI",
+        "id": "document-title",
+        "impact": "serious",
+        "nodes": [
+            {
+                "all": [],
+                "any": [
+                    {
+                        "data": null,
+                        "id": "doc-has-title",
+                        "impact": "serious",
+                        "message": "Document does not have a non-empty <title> element",
+                        "relatedNodes": []
+                    }
+                ],
+                "failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element",
+                "html": "<html>",
+                "impact": "serious",
+                "none": [],
+                "target": [
+                    "html"
+                ]
+            }
+        ],
+        "tags": [
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag242"
+        ]
+    },
+    {
+        "description": "Ensures every HTML document has a lang attribute",
+        "help": "<html> element must have a lang attribute",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/3.1/html-has-lang?application=axeAPI",
+        "id": "html-has-lang",
+        "impact": "serious",
+        "nodes": [
+            {
+                "all": [],
+                "any": [
+                    {
+                        "data": null,
+                        "id": "has-lang",
+                        "impact": "serious",
+                        "message": "The <html> element does not have a lang attribute",
+                        "relatedNodes": []
+                    }
+                ],
+                "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute",
+                "html": "<html>",
+                "impact": "serious",
+                "none": [],
+                "target": [
+                    "html"
+                ]
+            }
+        ],
+        "tags": [
+            "cat.language",
+            "wcag2a",
+            "wcag311"
+        ]
+    },
+    {
+        "description": "Ensures the page has only one main landmark and each iframe in the page has at most one main landmark",
+        "help": "Page must have one main landmark",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/3.1/landmark-one-main?application=axeAPI",
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "nodes": [
+            {
+                "all": [
+                    {
+                        "data": null,
+                        "id": "page-has-main",
+                        "impact": "moderate",
+                        "message": "Page does not have a main landmark",
+                        "relatedNodes": []
+                    }
+                ],
+                "any": [],
+                "failureSummary": "Fix all of the following:\n  Page does not have a main landmark",
+                "html": "<html>",
+                "impact": "moderate",
+                "none": [],
+                "target": [
+                    "html"
+                ]
+            }
+        ],
+        "tags": [
+            "cat.semantics",
+            "best-practice"
+        ]
+    },
+    {
+        "description": "Ensures all page content is contained by landmarks",
+        "help": "All page content must be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/3.1/region?application=axeAPI",
+        "id": "region",
+        "impact": "moderate",
+        "nodes": [
+            {
+                "all": [],
+                "any": [
+                    {
+                        "data": null,
+                        "id": "region",
+                        "impact": "moderate",
+                        "message": "Some page content is not contained by landmarks",
+                        "relatedNodes": [
+                            {
+                                "html": "<h1 class=\"text-danger\">Error.</h1>",
+                                "target": [
+                                    "h1"
+                                ]
+                            },
+                            {
+                                "html": "<h2 class=\"text-danger\">An error occurred while processing your request.</h2>",
+                                "target": [
+                                    "h2"
+                                ]
+                            },
+                            {
+                                "html": "<strong>Request ID:</strong>",
+                                "target": [
+                                    "p:nth-child(3) > strong"
+                                ]
+                            },
+                            {
+                                "html": "<code>00-0b79ef62dd54aa15906101ab157e500e-9f20c7ffb07ed1b4-00</code>",
+                                "target": [
+                                    "code"
+                                ]
+                            },
+                            {
+                                "html": "<h3>Development Mode</h3>",
+                                "target": [
+                                    "h3"
+                                ]
+                            },
+                            {
+                                "html": "<p>\n    Swapping to the <strong>Development</strong> environment displays detailed information about the error that occurred.\n</p>",
+                                "target": [
+                                    "p:nth-child(5)"
+                                ]
+                            },
+                            {
+                                "html": "<p>",
+                                "target": [
+                                    "p:nth-child(6)"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+                "html": "<html>",
+                "impact": "moderate",
+                "none": [],
+                "target": [
+                    "html"
+                ]
+            }
+        ],
+        "tags": [
+            "cat.keyboard",
+            "best-practice"
+        ]
+    }
+]
