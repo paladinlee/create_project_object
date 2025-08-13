@@ -1,3 +1,6 @@
+無障礙自行檢測工具
+使用 axe（Deque Systems 出品的無障礙檢測工具）做 無障礙檢測（Accessibility Testing）
+
 1. 下載Python(請使用Python 3.10 以上版本)
    https://www.python.org/getit/
 
@@ -28,3 +31,4 @@
 8. 執行程式
   
    執行> py main.py
+
